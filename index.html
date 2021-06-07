@@ -11,35 +11,31 @@
 </head>
 <body>
     <div id="root"></div>
+    <!--<script type="text/babel" src="./js/iniciales.js"></script>-->
     <script type="text/babel">
-        //console.log(React);
-        //console.log(ReactDOM);
-        /*Hola Mundo*/
-        /*ReactDOM.render(
-            React.createElement('h1',null,'Hola Mundo'),
-            document.getElementById('root')
-        );*/
+        /*Interpolacion: Inyectar codigo javaScript dentro de JSX*/
+        const Interpolar = () =>{
+            const nombre = prompt('Cual es tu nombre?');
 
-        /*Sin JSX*/
-        /*ReactDOM.render(
-            React.createElement('ol',null,
-               React.createElement('li',null,'Uva'),
-               React.createElement('li',null,'Limon'),
-               React.createElement('li',null,'Mango')
-            ),
-            document.getElementById('root')
-        );*/
-        /*Con JSX y Babel*/
-        ReactDOM.render(
-            <div>
-                <ol>
-                    <li>Manzana</li>
-                    <li>Uva</li>
-                    <li>Mango</li>    
-                </ol>
-            </div>,
-            document.getElementById('root')
-        );
+            const [numero,setNumero] = React.useState(0);
+            
+            console.log(numero);
+
+            setInterval(() =>{
+                setNumero(numero + 1);
+            },1500);
+
+            return (
+                <div>
+                    <h1>Hola {nombre}</h1>
+                    <h1>Fecha: {new Date().getFullYear()} </h1>
+                    <h1>Numero: {numero} </h1>
+                    <hr />
+                </div>
+            );
+        }
+
+        ReactDOM.render(<Interpolar />,document.getElementById('root'));
     </script>
 </body>
 </html>
