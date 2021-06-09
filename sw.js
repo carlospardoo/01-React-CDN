@@ -45,10 +45,15 @@ self.addEventListener("activate", (e)=>{
 }); 
 
 /*Fetch del service worker */
-self.addEventListener("fetch", (e)=>{
-    e.respondWith(() =>{
         //console.log(e.request);
+self.addEventListener("fetch", (e)=>{
+    e.respondWith(
         caches.match(e.request)
-          .then((response)=>{response ? response : fetch(e.request)});        
-    });
+          .then((response)=>{
+              if(response){
+                 return response; 
+              }
+              return fetch(e.request);
+          })        
+    )
 });
